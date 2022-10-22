@@ -12,10 +12,14 @@ yValue.addEventListener("keyup", function () {
  * Проверка на то, что форма готова к отправке
  * */
 function isFormReadyToSent() {
-    const form = document.getElementById("form");
+    const form = document.getElementById("main-form");
     const formData = new FormData(form);
 
-    if (!isXValid() || !isYValid || !formData.has('r')) {
+    console.log(formData.has('x'));
+    console.log(isYValid);
+    console.log(formData.has('r'));
+
+    if (!formData.has('x') || !isYValid || !formData.has('r')) {
         setSubmitButtonDisabled();
         return;
     }
@@ -25,18 +29,10 @@ function isFormReadyToSent() {
 
 
 /**
- * Проверка того, что переменная X было выбрана
- * */
-function isXValid(){
-    return document.getElementById("x-hidden-value").value !== "";
-}
-
-
-/**
  * Установка кнопки отправки формы в НЕактивное состояние
  * */
 function setSubmitButtonDisabled(){
-    document.getElementById("submit-button").disabled = true;
+    document.getElementById("check-button").disabled = true;
 }
 
 
@@ -44,5 +40,5 @@ function setSubmitButtonDisabled(){
  * Установка кнопки отправки формы в АКТИВНОЕ состояние
  * */
 function setSubmitButtonEnabled(){
-    document.getElementById("submit-button").disabled = false;
+    document.getElementById("check-button").disabled = false;
 }

@@ -17,72 +17,103 @@
 <header>
     <img src="img/itmo-logo.png" alt="ИТМО" style="width: 200px; height: 75px;">
     <h1>Шевчук Дмитрий</h1>
-    <h2>P3231</h2>
-    <h2>Вариант 3118</h2>
+    <h2>P32312</h2>
+    <h2>Вариант 66631212</h2>
 </header>
 <div class="main-app-div">
     <div class="main-app-div__element">
         <canvas class="bg-default" width="400" height="400" id="graph"></canvas>
     </div>
     <div class="main-app-div__element">
-        <form method="get" id="form" class="main-form">
+        <form method="get" id="main-form" class="main-form" action="${pageContext.request.contextPath}/main">
             <div class="x-button-press">
-
-                <p class="variable-name">Значение X:
-                    <span id="x-value" class="x-value-not-chosen">
-                        Выберите X
-                    </span>
-                </p>
+                <p class="variable-name">Значение X:</p>
                 <input type="hidden" name="x" id="x-hidden-value">
 
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="-5">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="-4">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="-3">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="-2">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="-1">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="0">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="1">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="2">
-                <input type="button" class="x-button" onclick="setXvalueToHiddenInput(this.value)" value="3">
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox1" value="-4" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox1">-4</label>
+                </div>
 
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox2" value="-3" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox2">-3</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox3" value="-2" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox3">-2</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox4" value="-1" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox4">-1</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox5" value="0" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox5">0</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox6" value="1" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox6">1</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox7" value="2" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox7">2</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox8" value="3" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox8">3</label>
+                </div>
+
+                <div class="checkbox-picker">
+                    <input type="checkbox" id="checkbox9" value="4" onclick="setCheckedOnlyOneCheckbox(this.id)">
+                    <label for="checkbox9">4</label>
+                </div>
             </div>
+
             <div class="y-text-input">
                 <p class="variable-name">Значение Y:</p>
                 <label>
                     <input type="text" name="y" id="y-value" placeholder="(-5 ... 5)">
                 </label>
             </div>
+
             <div class="r-checkbox-pick">
                 <p class="variable-name">Значение R:</p>
-                <div class="checkbox-picker">
-                    <input type="checkbox" name="r" id="checkbox1" value="1"
-                           onclick="setCheckedOnlyOneCheckbox(this.id)">
-                    <span>1</span>
-                </div>
-                <div class="checkbox-picker">
-                    <input type="checkbox" name="r" id="checkbox2" value="2"
-                           onclick="setCheckedOnlyOneCheckbox(this.id)">
-                    <span>2</span>
-                </div>
-                <div class="checkbox-picker">
-                    <input type="checkbox" name="r" id="checkbox3" value="3"
-                           onclick="setCheckedOnlyOneCheckbox(this.id)">
-                    <span>3</span>
-                </div>
-                <div class="checkbox-picker">
-                    <input type="checkbox" name="r" id="checkbox4" value="4"
-                           onclick="setCheckedOnlyOneCheckbox(this.id)">
-                    <span>4</span>
-                </div>
-                <div class="checkbox-picker">
-                    <input type="checkbox" name="r" id="checkbox5" value="5"
-                           onclick="setCheckedOnlyOneCheckbox(this.id)">
-                    <span>5</span>
-                </div>
+                <label>
+                    <input type="radio" name="r" value="1" onclick="isFormReadyToSent()">
+                    1
+                </label>
+
+                <label>
+                    <input type="radio" name="r" value="1.5" onclick="isFormReadyToSent()">
+                    1.5
+                </label>
+
+                <label>
+                    <input type="radio" name="r" value="2" onclick="isFormReadyToSent()">
+                    2
+                </label>
+
+                <label>
+                    <input type="radio" name="r" value="2.5" onclick="isFormReadyToSent()">
+                    2.5
+                </label>
+
+                <label>
+                    <input type="radio" name="r" value="3" onclick="isFormReadyToSent()">
+                    3
+                </label>
             </div>
+
             <div class="main-form-action-buttons">
-                <button id="submit-button" type="submit" disabled>Проверить</button>
-                <button id="clear-form-button" type="reset">Очистить поля</button>
+                <button id="check-button" type="submit" disabled>Проверить</button>
+                <button type="reset">Очистить поля</button>
             </div>
         </form>
 
@@ -108,7 +139,7 @@
         </tbody>
     </table>
 
-    <form style="text-align: center">
+    <form style="text-align: center" action="${pageContext.request.contextPath}/history">
         <button id="table-clear-button" type="submit">Очистить историю</button>
     </form>
 

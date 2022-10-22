@@ -5,13 +5,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
-@WebServlet(name = "controllerServlet", value = "/")
+
+@WebServlet(name = "controllerServlet", value = "/main")
 public class ControllerServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        PrintWriter pw = response.getWriter();
-        pw.println("aaaaaaaaaaaa");
+        System.out.println(request.getParameter("x"));
+        System.out.println(request.getParameter("y"));
+        System.out.println(request.getParameter("r"));
     }
 }

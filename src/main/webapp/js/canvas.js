@@ -1,24 +1,20 @@
 const canvas = document.querySelector('canvas');
-
-canvas.addEventListener('mousedown', function(e) {
-    getCursorPosition(canvas, e)
-});
-
-
 const context = canvas.getContext("2d");
 const width = canvas.width;
 const height = canvas.height;
 const scaleR = canvas.width / 3;
 const arrowDeltaInPx = 8;
 
-
+canvas.addEventListener('mousedown', function(e) {
+    getCursorPosition(canvas, e)
+});
 
 /**
  * Функция для обработки клика на canvas
  * */
 function getCursorPosition(canvas, event) {
 
-    const form = document.getElementById("form");
+    const form = document.getElementById("main-form");
     const formData = new FormData(form);
 
     if (!formData.has('r')) {
@@ -34,27 +30,28 @@ function getCursorPosition(canvas, event) {
     form["x"].value = x;
     form["y"].value = y;
 
-    setXvalueToHiddenInput(x);
-
     form.submit();
 }
 
 
 context.fillStyle = "#4CAF50";
 
+// Треугольник
 context.beginPath();
 context.moveTo(width / 2, height / 2);
-context.lineTo((width / 2) / 3, height / 2);
-context.lineTo(width / 2, (height / 2) + (((width / 2) / 3) * 2));
+context.lineTo((width / 2) / 3 * 5, height / 2);
+context.lineTo(width / 2, (height / 2) - (((width / 2) / 3) * 2));
 context.fill();
 
+// Круг
 context.beginPath();
-context.rect((width / 2) / 3, (height / 2) / 3, (width / 3), (height / 3));
-context.fill();
-
-context.beginPath();
-context.arc(width / 2, height / 2, height / 6, -Math.PI / 2, 0, false);
+context.arc(width / 2, height / 2, height / 6, Math.PI / 2, - Math.PI, false);
 context.lineTo(width / 2, height / 2)
+context.fill();
+
+// Прямоугольник
+context.beginPath();
+context.rect(width / 2, height / 2, width / 3, height / 3);
 context.fill();
 
 drawArrowOnCanvas(0, height / 2, width, height / 2);
