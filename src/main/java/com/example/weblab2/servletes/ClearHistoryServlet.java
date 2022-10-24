@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * Сервлет для удаления всех данных о выстрелах
+ * */
 @WebServlet(name = "clearHistoryServlet", value = "/history")
 public class ClearHistoryServlet extends HttpServlet {
 

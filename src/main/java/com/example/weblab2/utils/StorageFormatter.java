@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Set;
 
+/**
+ * Класс для вывода информации о выстрелах в index.jsp
+ * */
 public class StorageFormatter {
     public static String getRows(HitStorage hitStorage) {
         List<Shoot> hitList = hitStorage.getHitList();

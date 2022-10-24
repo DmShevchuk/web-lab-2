@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
+/**
+ * Основной сервлет приложения, принимающий все запросы
+ * */
 @WebServlet(name = "controllerServlet", value = "/main")
 public class ControllerServlet extends HttpServlet {
 

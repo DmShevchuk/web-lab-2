@@ -1,5 +1,5 @@
 /*
-* Функция для установки только одного чекбокса R в активное положение
+* Установить только один чекбокс X в активное положение
 * */
 function setCheckedOnlyOneCheckbox(id) {
     const checkboxPrefix = "checkbox";

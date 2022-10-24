@@ -136,7 +136,7 @@ function drawArrowOnCanvas(fromX, fromY, toX, toY) {
 }
 
 /**
- * Функция для конвертации координаты X клика мыши
+ * Сконвертировать координату клика мыши X
  * */
 function convertFromClickToX(x, r){
     return (x - width / 2) / scaleR * r;
@@ -144,22 +144,29 @@ function convertFromClickToX(x, r){
 
 
 /**
- * Функция для конвертации координаты Y клика мыши
+ * Сконвертировать координату клика мыши Y
  * */
 function convertFromClickToY(y, r){
     return (height / 2 - y) / scaleR * r;
 }
 
+/**
+ * Сконвертировать координату X в координату клика мыши
+ * */
 function convertFromXtoClick(x, r){
     return (x / r * scaleR  + width / 2);
-    //    return (x * 2 * scaleR * r + width) / 2;
 }
 
+/**
+ * Сконвертировать координату Y в координату клика мыши
+ * */
 function convertFromYtoClick(y, r){
-    return (-y / r * scaleR + height / 2)
-    //return (height - y * 2 * scaleR * r) / 2;
+    return (-y / r * scaleR + height / 2);
 }
 
+/**
+ * Нарисовать все выстрелы
+ * */
 function drawDot(x, y, r, color){
     let xCoord = convertFromXtoClick(x, r);
     let yCoord = convertFromYtoClick(y, r);

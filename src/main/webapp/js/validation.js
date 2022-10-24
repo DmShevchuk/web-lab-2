@@ -9,7 +9,7 @@ yValue.addEventListener("keyup", function () {
 
 
 /**
- * Проверка на то, что форма готова к отправке
+ * Проверить, что форма готова к отправке
  * */
 function isFormReadyToSent() {
     const form = document.getElementById("main-form");
@@ -25,7 +25,7 @@ function isFormReadyToSent() {
 
 
 /**
- * Установка кнопки отправки формы в НЕактивное состояние
+ * Установить кнопку отправки формы в НЕактивное состояние
  * */
 function setSubmitButtonDisabled(){
     document.getElementById("check-button").disabled = true;
@@ -33,7 +33,7 @@ function setSubmitButtonDisabled(){
 
 
 /**
- * Установка кнопки отправки формы в АКТИВНОЕ состояние
+ * Установить кнопку отправки формы в АКТИВНОЕ состояние
  * */
 function setSubmitButtonEnabled(){
     document.getElementById("check-button").disabled = false;

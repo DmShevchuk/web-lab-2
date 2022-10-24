@@ -13,6 +13,9 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Сервлет, определяющий попадание/непопадание в область
+ * */
 @WebServlet(name = "areaCheckServlet", value = "/area-checker")
 public class AreaCheckServlet extends HttpServlet {
 
@@ -68,6 +71,7 @@ public class AreaCheckServlet extends HttpServlet {
         shoot.setY(y);
         shoot.setR(r);
         shoot.setExecutionTime(System.nanoTime() - startTime);
+
         return shoot;
     }
 
