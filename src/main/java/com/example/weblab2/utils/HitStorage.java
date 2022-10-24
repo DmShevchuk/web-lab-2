@@ -1,5 +1,6 @@
-package com.example.weblab2.domain;
+package com.example.weblab2.utils;
 
+import com.example.weblab2.domain.Shoot;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

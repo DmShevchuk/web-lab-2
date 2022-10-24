@@ -1,6 +1,6 @@
-package com.example.weblab2;
+package com.example.weblab2.servletes;
 
-import com.example.weblab2.domain.HitStorage;
+import com.example.weblab2.utils.HitStorage;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

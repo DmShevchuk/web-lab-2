@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="com.example.weblab2.utils.StorageFormatter" %>
 
-<jsp:useBean id="hitStorage" scope="application" class="com.example.weblab2.domain.HitStorage"/>
+<jsp:useBean id="hitStorage" scope="application" class="com.example.weblab2.utils.HitStorage"/>
 
 <!DOCTYPE html>
 <html lang="ru">

@@ -1,6 +1,5 @@
 package com.example.weblab2.utils;
 
-import com.example.weblab2.domain.HitStorage;
 import com.example.weblab2.domain.Shoot;
 
 import java.io.IOException;
