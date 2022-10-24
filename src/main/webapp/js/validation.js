@@ -15,10 +15,6 @@ function isFormReadyToSent() {
     const form = document.getElementById("main-form");
     const formData = new FormData(form);
 
-    console.log(formData.has('x'));
-    console.log(isYValid);
-    console.log(formData.has('r'));
-
     if (!formData.has('x') || !isYValid || !formData.has('r')) {
         setSubmitButtonDisabled();
         return;

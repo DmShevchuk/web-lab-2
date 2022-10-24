@@ -1,24 +1,20 @@
-let keyArray = [];
-let canvasBgArrayClasses = ["bg-blue", "bg-default"];
-let canvasBgArrayClassesCounter = 0;
+const BASE_URL = "http://localhost:8080/Gradle___com_example___web_lab_2_1_0_SNAPSHOT_war/main";
 
-const graph = document.getElementById("graph");
+const clearHistoryButton = document.getElementById("table-clear-button");
+clearHistoryButton.addEventListener('click', createRequestToClearHistory);
 
-document.addEventListener('DOMContentLoaded', () => {
-    'use strict';
 
-    document.addEventListener('keydown', event => {
-        const key = event.key.toLowerCase();
-        if (keyArray.length === 5) {
-            keyArray.shift();
-        }
-        keyArray.push(key);
-        if (keyArray.join('') === '1sept') {
-            canvasBgArrayClassesCounter = (canvasBgArrayClassesCounter + 1) % 2;
-            graph.className = canvasBgArrayClasses[canvasBgArrayClassesCounter];
-        }
-        console.log(keyArray);
-    });
-});
+function getUrlWithQueryParam(queryParam){
+    let url = new URL(BASE_URL);
+    url.searchParams.set("q", queryParam);
+    return url;
+}
+
+function createRequestToClearHistory() {
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', getUrlWithQueryParam("history"));
+
+    xhr.send();
+}
 
 

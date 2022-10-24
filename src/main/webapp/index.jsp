@@ -1,4 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="com.example.weblab2.utils.StorageFormatter" %>
+
+<jsp:useBean id="hitStorage" scope="application" class="com.example.weblab2.domain.HitStorage"/>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -25,7 +28,7 @@
         <canvas class="bg-default" width="400" height="400" id="graph"></canvas>
     </div>
     <div class="main-app-div__element">
-        <form method="get" id="main-form" class="main-form" action="${pageContext.request.contextPath}/main">
+        <form method="get" id="main-form" class="main-form" onsubmit="drawDot()" action="${pageContext.request.contextPath}/main">
             <div class="x-button-press">
                 <p class="variable-name">Значение X:</p>
                 <input type="hidden" name="x" id="x-hidden-value">
@@ -86,34 +89,34 @@
             <div class="r-checkbox-pick">
                 <p class="variable-name">Значение R:</p>
                 <label>
-                    <input type="radio" name="r" value="1" onclick="isFormReadyToSent()">
+                    <input type="radio" id="radio1" name="r" value="1" onclick="isFormReadyToSent()">
                     1
                 </label>
 
                 <label>
-                    <input type="radio" name="r" value="1.5" onclick="isFormReadyToSent()">
+                    <input type="radio" id="radio2" name="r" value="1.5" onclick="isFormReadyToSent()">
                     1.5
                 </label>
 
                 <label>
-                    <input type="radio" name="r" value="2" onclick="isFormReadyToSent()">
+                    <input type="radio" id="radio3" name="r" value="2" onclick="isFormReadyToSent()">
                     2
                 </label>
 
                 <label>
-                    <input type="radio" name="r" value="2.5" onclick="isFormReadyToSent()">
+                    <input type="radio" id="radio4" name="r" value="2.5" onclick="isFormReadyToSent()">
                     2.5
                 </label>
 
                 <label>
-                    <input type="radio" name="r" value="3" onclick="isFormReadyToSent()">
+                    <input type="radio" id="radio5" name="r" value="3" onclick="isFormReadyToSent()">
                     3
                 </label>
             </div>
 
             <div class="main-form-action-buttons">
                 <button id="check-button" type="submit" disabled>Проверить</button>
-                <button type="reset">Очистить поля</button>
+                <button id="clear-form-button" type="reset">Очистить поля</button>
             </div>
         </form>
 
@@ -122,10 +125,9 @@
 
 <div class="table-div">
     <h2 style="text-align: center">Таблица результатов</h2>
-    <table class="styled-table">
+    <table class="styled-table" id="result-table">
         <thead>
         <tr>
-            <th>№</th>
             <th>X</th>
             <th>Y</th>
             <th>R</th>
@@ -135,18 +137,22 @@
         </tr>
         </thead>
         <tbody>
-
+            <%=StorageFormatter.getRows(hitStorage)%>
         </tbody>
     </table>
 
-    <form style="text-align: center" action="${pageContext.request.contextPath}/history">
-        <button id="table-clear-button" type="submit">Очистить историю</button>
+    <form action="${pageContext.request.contextPath}/main" style="text-align: center">
+        <input type="hidden" name="q" value="history"/>
+        <button type="submit">Очистить историю</button>
     </form>
-
 </div>
+
 <script src="js/script.js"></script>
 <script src="js/canvas.js"></script>
 <script src="js/validation.js"></script>
+<script src="js/form_event_listener.js"></script>
 <script src="js/key_listener.js"></script>
+
+<script>drawDots(<%=StorageFormatter.getJson(hitStorage)%>)</script>
 </body>
 </html>
