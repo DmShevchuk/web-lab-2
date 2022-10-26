@@ -2,6 +2,7 @@ package com.example.weblab2.servletes;
 
 import com.example.weblab2.utils.HitStorage;
 import com.example.weblab2.domain.Shoot;
+import jakarta.ws.rs.core.MediaType;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +27,7 @@ public class AreaCheckServlet extends HttpServlet {
 
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        response.setContentType("application/json");
+        response.setContentType(MediaType.APPLICATION_JSON);
 
         try {
             double x = Double.parseDouble(request.getParameter("x"));
@@ -46,9 +47,12 @@ public class AreaCheckServlet extends HttpServlet {
 //                );
 //                response.getWriter().close();
                 response.sendRedirect(request.getContextPath() + "/index.jsp");
+            }else {
+                throw new Exception();
             }
-        } catch (NumberFormatException e) {
-            response.sendRedirect("https://http.cat/400");
+        } catch (Exception e) {
+            response.setContentType(MediaType.APPLICATION_JSON);
+            response.sendError(400, "Некорректные данные");
         }
     }
 
@@ -76,7 +80,7 @@ public class AreaCheckServlet extends HttpServlet {
     }
 
     private boolean checkHit(double x, double y, double r){
-        return (x > 0 && y > 0 && x + y <= r)
+        return (x >= 0 && y >= 0 && x + y <= r)
                 || (x < 0 && y < 0 && x * x + y * y <= r * r)
                 || (x > 0 && y < 0 && x <= r && -1 * y <= r);
     }
