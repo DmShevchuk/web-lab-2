@@ -1,7 +1,8 @@
-package com.example.weblab2.servletes;
+package com.example.weblab2.servlets;
 
 import com.example.weblab2.utils.HitStorage;
 import com.example.weblab2.domain.Shoot;
+import com.example.weblab2.utils.LastResultHandler;
 import jakarta.ws.rs.core.MediaType;
 
 import javax.servlet.ServletException;
@@ -21,11 +22,6 @@ import java.util.List;
 public class AreaCheckServlet extends HttpServlet {
 
     @Override
-    public void init() throws ServletException {
-        super.init();
-    }
-
-    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType(MediaType.APPLICATION_JSON);
 
@@ -38,21 +34,13 @@ public class AreaCheckServlet extends HttpServlet {
                 Shoot shoot = getShotResult(x, y, r);
                 HitStorage hitStorage = (HitStorage) getServletContext().getAttribute("hitStorage");
                 hitStorage.add(shoot);
-//                response.setHeader("Cache-Control", "no-cache");
-//                response.setContentType("application/json; charset=UTF-8");
-//                response.getWriter().println(
-//                        hitStorage.getHitList()
-//                                .get(hitStorage.getHitList().size() - 1)
-//                                .convertToJson()
-//                );
-//                response.getWriter().close();
-                response.sendRedirect(request.getContextPath() + "/index.jsp");
+                ((LastResultHandler)getServletContext().getAttribute("lastResultHandler")).setShoot(shoot);
+                response.sendRedirect(request.getContextPath() + "/result.jsp");
             }else {
                 throw new Exception();
             }
         } catch (Exception e) {
-            response.setContentType(MediaType.APPLICATION_JSON);
-            response.sendError(400, "Некорректные данные");
+            response.sendRedirect(request.getContextPath() + "/error.jsp");
         }
     }
 

@@ -2,6 +2,7 @@
 <%@ page import="com.example.weblab2.utils.StorageFormatter" %>
 
 <jsp:useBean id="hitStorage" scope="application" class="com.example.weblab2.utils.HitStorage"/>
+<%@ taglib uri="WEB-INF/mytags.tld" prefix="m" %>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -19,7 +20,6 @@
 </head>
 
 <body>
-
 <!-- Шапка с ФИО, номером группы и вариантом -->
 <header>
     <img src="img/itmo-logo.png" alt="ИТМО" style="width: 200px; height: 75px;">
@@ -29,7 +29,6 @@
 </header>
 
 <div class="main-app-div">
-
     <!-- Канвас для отрисовки фигур и точек -->
     <div class="main-app-div__element">
         <canvas class="bg-default" width="400" height="400" id="graph"></canvas>
@@ -145,11 +144,17 @@
     </table>
 
     <!-- Кнопка для очистки данных -->
-    <form action="${pageContext.request.contextPath}/main" style="text-align: center">
+    <form action="${pageContext.request.contextPath}/main" style="text-align: center;
+                                                                  margin-top: 10px;
+                                                                  padding-bottom: 10px">
         <input type="hidden" name="q" value="history"/>
         <button type="submit">Очистить историю</button>
     </form>
 
+</div>
+
+<div>
+    <m:today/>
 </div>
 
 <script src="js/script.js"></script>

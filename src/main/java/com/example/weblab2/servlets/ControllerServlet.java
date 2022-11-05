@@ -1,6 +1,7 @@
-package com.example.weblab2.servletes;
+package com.example.weblab2.servlets;
 
 import com.example.weblab2.utils.HitStorage;
+import com.example.weblab2.utils.LastResultHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ public class ControllerServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         getServletContext().setAttribute("hitStorage", new HitStorage());
+        getServletContext().setAttribute("lastResultHandler", new LastResultHandler());
     }
 
     @Override

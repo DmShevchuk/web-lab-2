@@ -11,7 +11,7 @@ repositories {
 }
 
 ext {
-    junitVersion = '5.8.1'
+    junitVersion = '5.9.0'
 }
 
 sourceCompatibility = '1.8'
@@ -27,7 +27,9 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
     compileOnly('javax.servlet:javax.servlet-api:4.0.1')
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.0.1'
+    compileOnly 'javax.servlet.jsp:javax.servlet.jsp-api:2.3.1'
 
+    implementation 'org.jsoup:jsoup:1.15.3'
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
